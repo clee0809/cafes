@@ -1,0 +1,1 @@
+A website that lists cafes with wifi and power ofr remote working.

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>Coffee and WIFI</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/blog/">
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../static/styles.css" rel="stylesheet">
+</head>
+
+
+<body>
+
+  <div class="container title-nav">
+    <header class="blog-header py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-6 text-center">
+          <a class="blog-header-logo text-dark" href="#">Coffee and WIFI</a>
+        </div>
+        <div class="col-6 d-flex justify-content-end align-items-center">
+          <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('add_new_cafe') }}">Add New Cafe</a>
+        </div>
+      </div>
+    </header>
+
+  </div>
+
+  <main class="container">
+
+    <div class="row mb-2">
+      {% for cafe in cafes %}
+      <div class="container">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col-auto d-none d-lg-block">
+            <img width="250" height="250" src="{{cafe.img_url}}" />
+          </div>
+          <div class="col p-4 d-flex flex-column position-static">
+            <h3 class="mb-0"><a href="{{url_for('edit_cafe', cafe_id=cafe.id)}}">{{cafe.name}}</a></h3>
+            <div class="mb-1 text-muted"><a href="{{url_for('delete_cafe', cafe_id=cafe.id) }}">Delete</a></div>
+            <p class="card-text mb-auto">Are <strong>power sockets</strong> available to use? {{"✅" if cafe.has_sockets
+              == True else "❌"}}</p>
+            <p class="card-text mb-auto">Is <strong>WIFI</strong> available? {{"✅" if cafe.has_wifi == True else "❌"}}
+            </p>
+            <p class="card-text mb-auto">Can you comfortably <strong>make calls</strong>? {{"✅" if cafe.can_take_calls
+              == True else "❌"}}</p>
+            <p class="card-text mb-auto">Is <strong>restroom</strong> available? {{"✅" if cafe.has_toilet == True else
+              "❌"}}</p>
+            <p class="card-text mb-auto">How large is the place? <strong>{{cafe.seats}}</strong> seats available</p>
+            <p class="card-text mb-auto">What is <strong>price</strong> of the regular coffee?
+              <strong>{{cafe.coffee_price}}</strong></p>
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+
+
+  </main>
+
+  <footer class="blog-footer">
+    <p>
+      <a href="#">Back to top</a>
+    </p>
+  </footer>
+
+
+
+</body>
+
+</html>
