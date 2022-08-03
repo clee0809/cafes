@@ -16,7 +16,7 @@ Bootstrap(app)
 
 # ------- create new database ------------#
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cafes.db' # development
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','sqlite:///cafes.db') # production
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL_1','sqlite:///cafes.db') # production
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
