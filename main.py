@@ -38,6 +38,7 @@ class Cafe(db.Model):
     def __repr__(self) -> str:
         return super().__repr__()
 
+db.create_all() ## after creating commented out
 
 @app.route("/")
 def home():
